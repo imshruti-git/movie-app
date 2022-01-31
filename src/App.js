@@ -1,24 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { Container } from '@material-ui/core';
+import Trending from './screens/trending/Trending';
+import Header from './components/header/Header';
+import Navigation from './components/Navigation';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Series from './screens/series/Series';
+import Movies from './screens/movies/Movies';
+import Search from './screens/search/Search';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+       <div className="app">
+         <Container>
+          <Routes>
+          <Route exact path="/" element={<Trending />} />
+            <Route exact path="/movies" element={<Movies />} />
+            <Route exact path="/series" element={<Series />} />
+            <Route exact path="/search" element={<Search />} />
+          </Routes>
+         </Container>
+        
+        </div>
+      <Navigation />
+    </Router>
   );
 }
 
