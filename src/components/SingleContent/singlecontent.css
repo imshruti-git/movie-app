@@ -1,8 +1,35 @@
 .media {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 200px;
     margin: 5px ;
     padding: 5px;
-
+    position: relative;
+    border-radius: 10px;
+    background-color: rgb(56, 55, 56);
+}
+.media:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+@media (max-width: 550px) {
+    .media {
+      width: 46%;
+    }
+  }
+.image {
+    border-radius: 10px;
+}
+.title {
+    width: 100%;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 17px;
+}
+.subtitle {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 3px;
+    padding: 0 2px;
 }

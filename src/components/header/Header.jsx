@@ -2,9 +2,9 @@ import "./header.css";
 
 const Header = () => {
   return (
-    <div className='header'>
-        🎥  entertainment  🎥
-    </div>
+    <span onClick={() => window.scroll(0,0)} className='header'>
+        🎥  it's movie time  🎥
+    </span>
   ) 
 };
 
