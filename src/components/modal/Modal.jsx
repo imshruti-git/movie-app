@@ -8,6 +8,8 @@ import { img_500, unavailable, unavailableLandscape } from "../../config/config"
 import "./modal.css";
 import { Button } from "@material-ui/core";
 import YouTubeIcon from "@material-ui/icons/YouTube";
+import Caraousel from "../caraousel/Caraousel";
+import CloseIcon from '@material-ui/icons/Close';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -89,6 +91,7 @@ export default function ContentModal({ children, media_type, id }) {
           {content && (
             <div className={classes.paper}>
               <div className="ContentModal">
+              <CloseIcon onClick={handleClose} style={{ cursor: 'pointer', marginRight: 0}}/>
                 <img
                   src={
                     content.poster_path
@@ -108,6 +111,7 @@ export default function ContentModal({ children, media_type, id }) {
                   className="ContentModal__landscape"
                 />
                 <div className="ContentModal__about">
+                    
                   <span className="ContentModal__title">
                     {content.name || content.title} (
                     {(
@@ -124,7 +128,9 @@ export default function ContentModal({ children, media_type, id }) {
                   <span className="ContentModal__description">
                     {content.overview}
                   </span>
-                  
+                  <div>
+                      <Caraousel media_type={media_type} id={id} />
+                  </div>
                   <Button
                     variant="contained"
                     startIcon={<YouTubeIcon />}
