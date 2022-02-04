@@ -3,17 +3,19 @@ import axios from "axios";
 import SingleContent from '../../components/SingleContent/SingleContent';
 import CustomPagination from '../../components/customPagination/CustomPagination';
 import Genre from '../../components/genre/Genre';
+//import useGenre from "../../hooks/useGenre";
 
 const Series = () => {
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
   const [numOfPages, setNumOfPages] = useState();
-  const [genre, setGenre] = useState([]);
-  const [selectedgenre, setSelectedgenre] = useState();
+  const [genres, setGenres] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState();
+  //const genreforURL = useGenre(selectedgenre);
 
   const fetchSeries = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
+      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${selectedGenres}`
     );
 
     console.log(data);
@@ -24,19 +26,17 @@ const Series = () => {
   useEffect(() => {
     window.scroll(0, 0);
     fetchSeries();
-    
-  }, [page]);
+    // eslint-disable-next-line
+  }, [page, selectedGenres]);
 
   return (
     <>
       <span className='pagetitle'>tv series</span>
       <Genre 
             type="tv"
-            genre={genre}
-            setGenre={setGenre}
-            selectedgenre={selectedgenre}
-            setSelectedgenre={setSelectedgenre}
-            setPage={setPage}
+            genres={genres}
+            setGenres={setGenres}
+            setSelectedGenres={setSelectedGenres}
           />
       <div className="body">
               {content && content.map((item)=>(
