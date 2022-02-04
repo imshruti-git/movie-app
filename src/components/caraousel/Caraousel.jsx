@@ -22,6 +22,7 @@ const Caraousel = ({ media_type, id }) => {
 
   useEffect(() => {
     fetchCredits();
+    // eslint-disable-next-line
   }, []);
 
   const items = credits.map((c) => (

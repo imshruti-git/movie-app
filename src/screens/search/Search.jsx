@@ -32,14 +32,15 @@ const Search = () => {
       `https://api.themoviedb.org/3/search/${type ? 'movie' : 'tv'}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchtext}&page=${page}&include_adult=false`
     );
 
-    console.log(data);
+    //console.log(data);
     setContent(data.results);
+    setNumOfPages(data.total_pages)
   };
 
   useEffect(() => {
     window.scroll(0, 0);
     fetchSearch();
-    
+    // eslint-disable-next-line
   }, [type, page]);
 
   return (
